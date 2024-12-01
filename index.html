@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree farm manual!</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+ <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+
+    header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    padding: 0.9em 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+header img {
+    height: 80px;
+    margin-left: 2.5%;
+    margin-right: 0px;
+    border-radius: 0%;
+    display: inline-block;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    flex-grow: 10;
+    text-align: center;
+    padding-right: 10%;
+}
+
+
+
+    .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: var(--content-bg);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .container:hover {
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .content-grid .text {
+        flex: 1;
+    }
+
+    .content-grid .image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .text p, .text ul {
+        font-size: 1.1rem;
+        color: var(--secondary-text-color);
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+    .image img, .video iframe {
+        width: 100%;
+        max-width: 550px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .image img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .video iframe:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 2.5%;
+    transform: translateY(40%);
+}
+
+
+    button {
+        padding: 8px 16px;
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+        background-color: var(--button-hover-bg);
+        box-shadow: 0 0 15px var(--button-hover-bg);
+    }
+
+    .faq {
+        font-size: 1rem;
+        color: var(--secondary-text-color);
+    }
+
+    .faq p {
+        margin: 15px 0;
+    }
+
+    :root {
+        --bg-color: #f4f4f9;
+        --text-color: #333;
+        --header-bg: #333;
+        --header-footer-text: #eee1e1;
+        --content-bg: #fff;
+        --primary-text-color: #111;
+        --secondary-text-color: #555;
+        --button-bg: #007bff;
+        --button-text: #fff;
+        --button-hover-bg: #0056b3;
+    }
+
+    [data-theme="dark"] {
+        --bg-color: #101a27;
+        --text-color: #e0e0e0;
+        --header-footer-bg: #181c24;
+        --header-footer-text: #fff;
+        --content-bg: #121212;
+        --primary-text-color: #ffffff;
+        --secondary-text-color: #b0b0b0;
+        --button-bg: #00aaff;
+        --button-text: #fff;
+        --button-hover-bg: #007bb5;
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/qD82yBx/transparent-skinmc-avatar-removebg-preview.png" alt="Farm Icon">
+        <h1>Tree Farm Overview and Mechanics Manual</h1>
+            <div class="toggle-container">
+        <button onclick="toggleTheme()">🌙/🌞 Toggle Theme</button>
+    </div>
+    </header>
+
+
+
+    <div class="container">
+        <h2>Activation Conditions</h2>
+        <div class="content-grid">
+            <div class="text">
+                <p>For the farm to function, three conditions (monitored via redstone at specific coordinates) must be met:</p>
+                <ul>
+                    <li><strong>Enderpearl:</strong> An enderpearl must be in both of the stasis chambers. (put 2-3 enderpearls in the End stasis chamber for it to be constantly detected)</li>
+                    <li><strong>Farm Toggle:</strong> The farm must be turned on.</li>
+                    <li><strong>Bone Meal Supply:</strong> The system must have sufficient bone meal.</li>
+                </ul>
+            </div>
+            <div class="image">
+                <img src="/images/farm-conditions.png" alt="Enderpearl Stasis Chamber">
+            </div>
+        </div>
+
+       
+
+        <h2>Farm Mechanics</h2>
+        <h3>Block Breaking</h3>
+        <div class="content-grid">
+            <div class="text">
+                <p>The farm uses the End platform's unique behavior: when an entity travels to the End, blocks within the 5x4x5 platform are broken. This requires chunk loading specific stronghold coordinates and throwing an enderpearl into the chunk-loading stasis chamber.</p>
+            </div>
+            <div class="image">
+                <img src="/images/block-breaking.png" alt="Chunk Loading Stasis Chamber">
+            </div>
+        </div>
+        <h3>Tree Growing</h3>
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3SKuNGz0-O0" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h3>Bone Meal Supply</h3>
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QbLnHtIzXTM" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h3>Block Pushers</h3>
+        <div class="content-grid">
+            <div class="text">
+                <p>Custom-designed block pushers convert a horizontal block stream into a vertical one, with a built-in anti-stuck mechanism. Simpler pushers near the End platform lack this anti-stuck feature due to space constraints and potential issues. If they cause problems, update them.</p>
+            </div>
+            <div class="image">
+                <img src="/images/block-pushers.png" alt="Block Pusher">
+            </div>
+        </div>
+
+ <h2>Item Collection System</h2>
+        <div class="content-grid">
+            <div class="text">
+                <p>Minecarts beneath the obsidian platform gather items. To access storage, use the maintenance door and descend the ladder to find the chest system.</p>
+            </div>
+            <div class="image">
+                <img src="/images/collection-system.png" alt="Item Collection System">
+            </div>
+        </div>
+
+        <h2>FAQ</h2>
+        <div class="faq">
+            <p><strong>Does the farm run 24/7?</strong></p>
+            <p>No, it operates only when the three activation conditions are met, and the stronghold's block-breaking system is loaded (a player with enderpearls in both stasis chambers must be online).</p>
+
+            <p><strong>Items aren't being collected from the End platform.</strong></p>
+            <p>Check for missing or clogged minecarts in the collection system.</p>
+
+            <p><strong>The End platform is full of blocks!</strong></p>
+            <p>Verify the stronghold block-breaking system. Ensure a snowman attacks silverfish and the stasis chamber's enderpearl is intact.</p>
+
+            <p><strong>The redstone is damaged, and I can't identify the issue.</strong></p>
+            <p>Report it as grief and request a rollback.</p>
+
+            <p><strong>Why is the farm slow?</strong></p>
+            <p>Currently, the farm uses only one bone meal source, which may not sustain operation. If bone meal runs low, please pause the farm, otherwise it's gonna waste bonemeal, thank you.</p>
+
+            <p><strong>Where is the stronghold</strong></p>
+            <p>If you wish to be added to the beacon with the stronghold, message me on discord @uxiii | Uxiii#5454</p>
+        </div>
+    </div>
+
+
+    <script>
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + value + "; expires=" + d.toUTCString() + "; path=/";
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            setCookie('theme', newTheme, 365); 
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = getCookie('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+            } else {
+                document.body.setAttribute('data-theme', 'light'); 
+            }
+        });
+    </script>
+</body>
+</html>
